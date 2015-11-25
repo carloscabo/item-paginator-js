@@ -1,7 +1,12 @@
 $(document).ready(function(){
   //La magia aquí
+
+  itemPaginator.onChangePage = function () {
+    console.log('custom'+this.getCurentPage());
+  };
+
   itemPaginator.init({
-    items: 50,
+    items: 283,
     items_per_page: 7,
     container: $('.item-paginator')
   });

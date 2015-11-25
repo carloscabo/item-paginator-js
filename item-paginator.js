@@ -72,15 +72,15 @@ var itemPaginator = {
   createHTML: function() {
     var
       that = this,
-      media = 0,
-      loop_ini = this.set.current_page - media + 1, // Restamos la primera
-      loop_fin = this.set.current_page + media - 1; // Restamos la última
+      // media
+      media = Math.floor(this.set.pages_to_show / 2),
+      // Restamos la primera
+      loop_ini = this.set.current_page - media + 1,
+      // Restamos la última
+      loop_fin = this.set.current_page + media - 1;
 
     // Paginator container
     this.set.$html = $('<div>').addClass(this.set.classes.paginator);
-
-    // media
-    media = Math.floor(this.set.pages_to_show / 2);
 
     // Offset & limit
     this.set.offset = (this.set.current_page - 1) * this.set.items_per_page + 1;
@@ -203,7 +203,6 @@ var itemPaginator = {
   setItems: function(items) {
     this.set.items = items;
     this.calculatePageCount();
-    return this;
   },
 
   getCurentPage: function() {
@@ -222,7 +221,6 @@ var itemPaginator = {
       this.set.current_page = pagenum;
       this.createHTML();
     }
-    return this;
   },
 
   goToNext: function() {
