@@ -32,7 +32,7 @@ var itemPaginator = {
       prev: 'prev',
       next: 'next',
       page: 'page-',
-      paginator: 'paginator',
+      paginator: 'item-paginator',
       ellipsis: 'ellipsis'
     },
     $html: null

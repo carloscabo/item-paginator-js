@@ -8,6 +8,6 @@ $(document).ready(function(){
   itemPaginator.init({
     items: 283,
     items_per_page: 7,
-    container: $('.item-paginator')
+    container: $('.sample-paginator-1')
   });
 });
