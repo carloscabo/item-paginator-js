@@ -1,12 +1,12 @@
 /*
-Table paginator 0.01 alpha
+  Item paginator 0.02 beta
+  2015 by Carlos Cabo
 
-tablePaginator.init({
-  items: 56,
-  items_per_page: 7,
-  container: $('#table-paginator')
-});
-
+  var ip1 = new itemPaginator({
+    items: 56,
+    items_per_page: 7,
+    container: $('#table-paginator')
+  });
 */
 
 var itemPaginator = {
