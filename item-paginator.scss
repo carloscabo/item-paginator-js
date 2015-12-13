@@ -2,4 +2,42 @@
   width: 100%;
   margin-bottom: 16px;
   text-align: center;
+
+  a, span {
+    display: inline-block;
+    padding: 0.5em;
+    margin: 3px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 2.2em;
+    cursor: pointer;
+
+    text-align: center;
+    text-decoration: none;
+    color: #e00;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &.active {
+      background-color: #e00;
+      font-weight: 700;
+      color: #fff;
+      cursor: default;
+    }
+
+    &.disabled {
+      background-color: #ccc;
+      color: #666;
+      cursor: default;
+    }
+
+    &.ellipsis {
+      cursor: default;
+    }
+  }
 }
