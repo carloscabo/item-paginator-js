@@ -1,4 +1,7 @@
 # item-paginator-js
+
+
+
 Simple item paginator, to paginate tables, item collections... with some callbacks:
 
 ## Usage
@@ -36,8 +39,15 @@ iP1.getCurentPage();
 // Gets total number of pages
 iP1.getPages();
 
+// Forces redraw of instances
+iP1.redraw();
+
 // Removes instances in the page
 iP1.destroy();
+
+// Useful if you need to translate current page navigator to SQL query...
+iP1.getItemsOffset();
+iP1.getItemsLimit();
 
 ````
 
@@ -47,6 +57,7 @@ iP1.destroy();
 var iP2 = new ItemPaginator({
   items: 46,
   items_per_page: 3,
+  start_page: 4, // Starting page, default is 1
   container: $('#sample-paginator-2'),
   text: {
     prev: '&#8249; Anterior',

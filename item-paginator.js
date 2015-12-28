@@ -80,6 +80,9 @@ var ItemPaginator = (function() {
         return;
       }
       this.set.current_page = 1;
+      if (this.set.start_page) {
+        this.set.current_page = this.set.start_page;
+      }
       this.createHTML();
     },
 
@@ -266,6 +269,15 @@ var ItemPaginator = (function() {
         this.set.current_page--;
         this.goToPage(this.set.current_page);
       }
+    },
+
+    // Item related
+    getItemsOffset: function() {
+      return (this.set.current_page -1) * this.set.items_per_page;
+    },
+
+    getItemsLimit: function() {
+      return this.set.items_per_page;
     },
 
     // Events supposed to be assigned from outside

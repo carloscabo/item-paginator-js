@@ -18,7 +18,7 @@ $(document).ready(function(){
   iP2 = new ItemPaginator({
     items: 46,
     items_per_page: 3,
-    start_page: 4, // Starts in page
+    start_page: 4, // Starting page, default is 1
     container: $('#sample-paginator-2'),
     text: {
       prev: '&#8249; Anterior',
@@ -36,6 +36,16 @@ $(document).ready(function(){
       // that -> itemPaginator obj itself
       console.log( that.getCurentPage() );
     }
+  });
+
+  $('.sample-2-set-page').on('click', function(e) {
+    e.preventDefault();
+    iP2.goToPage(12);
+  });
+
+  $('.sample-2-set-items').on('click', function(e) {
+    e.preventDefault();
+    iP2.setItems(128);
   });
 
 
