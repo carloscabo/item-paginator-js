@@ -3,46 +3,53 @@ Simple item paginator, to paginate tables, item collections... with some callbac
 
 ## Usage
 
-```
+````javascript
 $(document).ready(function(){
   //La magia aquí
-  itemPaginator.init({
-    items: 50,
+  var iP1 = new ItemPaginator({
+    items: 283,
     items_per_page: 7,
-    container: $('.item-paginator')
+    container: $('.sample-paginator-1')
   });
 });
-```
+````
 
 ## Methods
 
-```
+````javascript
 // You can update the number of items and force redrawing
-itemPaginator.setItems(125);
+iP1.setItems(125);
 
 // Navigate to page
-itemPaginator.goToPage(2);
-```
+iP1.goToPage(2);
+````
 
 ## Event callbacks
 
-```
-// On every page change, includinng page 1 initialization
-itemPaginator.onChangePage = function () {
-  console.log(this.current_page);
-}
-
-// Enter first page
-itemPaginator.onFirstPage = function () {
-  console.log('First page');
-}
-
-// Enter last page
-itemPaginator.onLastPage = function () {
-  console.log('First page');
-}
-```
+````javascript
+var iP2 = new ItemPaginator({
+  items: 46,
+  items_per_page: 3,
+  container: $('#sample-paginator-2'),
+  text: {
+    prev: '&#8249; Anterior',
+    next: 'Siguiente &#8250;'
+  },
+  onFirstPage: function() {
+    // that -> itemPaginator obj itself
+    console.log( 'iP2 first page:' + that.getCurentPage() );
+  },
+  onLastPage: function() {
+    // that -> itemPaginator obj itself
+    console.log( 'iP2 last page:' + that.getCurentPage() );
+  },
+  onChangePage: function() {
+    // that -> itemPaginator obj itself
+    console.log( that.getCurentPage() );
+  }
+});
+````
 
 ## TO-DO
-- Several instances
-- Intensive testings
+- Tests
+- More samples

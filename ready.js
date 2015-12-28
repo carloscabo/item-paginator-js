@@ -13,10 +13,6 @@ $(document).ready(function(){
     container: $('.sample-paginator-1')
   });
 
-  iP1.onChangePage = function () {
-    console.log('custom message '+this.getCurentPage());
-  };
-
   // Sample2 ///////////////////////////////////////////////////////////////////
 
   iP2 = new ItemPaginator({
@@ -28,18 +24,18 @@ $(document).ready(function(){
       next: 'Siguiente &#8250;'
     },
     onFirstPage: function() {
-      console.log( 'sample-2 first page' );
+      // that -> itemPaginator obj itself
+      console.log( 'iP2 first page:' + that.getCurentPage() );
     },
     onLastPage: function() {
-      console.log( 'sample-2 last page' );
+      // that -> itemPaginator obj itself
+      console.log( 'iP2 last page:' + that.getCurentPage() );
     },
     onChangePage: function() {
-      console.log(this.getCurentPage());
-      
-      // console.log( 'sample-2 entered page: '+this.getCurentPage() );
+      // that -> itemPaginator obj itself
+      console.log( that.getCurentPage() );
     }
   });
 
-  console.log(iP2);
 
 });

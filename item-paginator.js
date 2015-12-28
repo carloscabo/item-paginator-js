@@ -39,12 +39,20 @@ var ItemPaginator = (function() {
         ellipsis: 'ellipsis'
       },
       $html: null
-    };
+    },
+
+    // Link to this obj
+    that = this,
+
+    // Event names
+    this.event_names = ['onChangePage', 'onFirstPage', 'onLastPage'];
 
     this.set = $.extend(true, this.set, user_options);
 
-    if (typeof(this.set.onChangePage) == "function") {
-      this.onChangePage = this.set.onChangePage;
+    for (var i = 0, len = this.event_names.length; i < len; i++) {
+      if (typeof(this.set[this.event_names[i]]) == "function") {
+        this[this.event_names[i]] = this.set[this.event_names[i]];
+      }
     }
 
     if (this.set.items === 0 || this.set.items_per_page === 0) {
@@ -85,7 +93,9 @@ var ItemPaginator = (function() {
       // Restamos la primera
       loop_ini = this.set.current_page - media + 1,
       // Restamos la última
-      loop_fin = this.set.current_page + media - 1;
+      loop_fin = this.set.current_page + media - 1,
+      // Page link container
+      $page = null;
 
       // Paginator container
       this.set.$html = $('<div>').addClass(this.set.classes.paginator);
@@ -129,7 +139,7 @@ var ItemPaginator = (function() {
       // Less pages than pages_to_show... no need of ellipsis, simple loop
       if (this.set.pages < this.set.pages_to_show) {
         for (var i = 2; i < this.set.pages; i++) {
-          var $page = $('<a href="#page-'+i+'" class="page page-last page-'+i+'">'+i+'</a>');
+          $page = $('<a href="#page-'+i+'" class="page page-last page-'+i+'">'+i+'</a>');
           $page.appendTo(this.set.$html);
         }
       } else {
@@ -147,8 +157,8 @@ var ItemPaginator = (function() {
         }
 
         // Hay más elementos que elementos por página
-        for (var i = loop_ini; i <= loop_fin; i++) {
-          var $page = $('<a href="#page-'+i+'" class="page page-last page-'+i+'">'+i+'</a>');
+        for (var j = loop_ini; j <= loop_fin; j++) {
+          $page = $('<a href="#page-'+j+'" class="page page-last page-'+j+'">'+j+'</a>');
           $page.appendTo(this.set.$html);
         }
 
@@ -163,7 +173,7 @@ var ItemPaginator = (function() {
 
       // Last page
       var $last = $('<a href="#page-'+this.set.pages+'" class="page page-last page-'+this.set.pages+'">'+this.set.pages+'</a>');
-      $last.appendTo(this.set.$html)
+      $last.appendTo(this.set.$html);
 
       // Add active class
       this.set.$html.find('a.page-'+this.set.current_page).addClass(this.set.classes.current);
@@ -258,7 +268,7 @@ var ItemPaginator = (function() {
     //   console.log('Last page!');
     // }
 
-  } // Prototype
+  }; // Prototype
 
   return Constructor;
 
