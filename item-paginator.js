@@ -1,5 +1,5 @@
 /*
-  Item paginator 0.02 beta
+  Item paginator 0.9 beta
   2015 by Carlos Cabo
 
   var ip1 = new itemPaginator({
@@ -23,6 +23,7 @@ var ItemPaginator = (function() {
       items_per_page: 0,
       items_last_page: 0,
       current_page: 0,
+      start_page: null,
       container: null,
       text: {
         ellipsis: '…',
@@ -41,11 +42,11 @@ var ItemPaginator = (function() {
       $html: null
     },
 
-    // Link to this obj
-    that = this,
-
     // Event names
-    this.event_names = ['onChangePage', 'onFirstPage', 'onLastPage'];
+    this.event_names = ['onChangePage', 'onFirstPage', 'onLastPage'],
+
+    // Link to this obj
+    that = this;
 
     this.set = $.extend(true, this.set, user_options);
 
@@ -215,6 +216,13 @@ var ItemPaginator = (function() {
       }
     },
 
+    // Alias to createHTML, forces recreate HTML
+    redraw: function() {
+      this.createHTML();
+      return;
+    },
+
+    // Destroys paginator instances in page
     destroy: function() {
       this.set.container.html('');
       return;
@@ -237,6 +245,9 @@ var ItemPaginator = (function() {
       if (pagenum > this.set.pages) {
         pagenum = this.set.pages;
       }
+      if (pagenum < 1) {
+        pagenum = 1;
+      }
       if ( pagenum > 0 && pagenum < this.set.pages + 1 ) {
         this.set.current_page = pagenum;
         this.createHTML();
@@ -245,13 +256,15 @@ var ItemPaginator = (function() {
 
     goToNext: function() {
       if (this.set.current_page < this.set.pages) {
-        this.goToPage(this.set.current_page++);
+        this.set.current_page++;
+        this.goToPage(this.set.current_page);
       }
     },
 
     goToPrev: function() {
       if (this.set.current_page > 1) {
-        this.goToPage(this.set.current_page--);
+        this.set.current_page--;
+        this.goToPage(this.set.current_page);
       }
     },
 

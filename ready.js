@@ -18,6 +18,7 @@ $(document).ready(function(){
   iP2 = new ItemPaginator({
     items: 46,
     items_per_page: 3,
+    start_page: 4, // Starts in page
     container: $('#sample-paginator-2'),
     text: {
       prev: '&#8249; Anterior',

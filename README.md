@@ -3,7 +3,7 @@ Simple item paginator, to paginate tables, item collections... with some callbac
 
 ## Usage
 
-````javascript
+```javascript
 $(document).ready(function(){
   //La magia aquí
   var iP1 = new ItemPaginator({
@@ -12,16 +12,33 @@ $(document).ready(function(){
     container: $('.sample-paginator-1')
   });
 });
-````
+```
 
 ## Methods
 
 ````javascript
 // You can update the number of items and force redrawing
+// Resets current page to 1
 iP1.setItems(125);
 
 // Navigate to page
 iP1.goToPage(2);
+
+// Advance to next page
+iP1.goToNext();
+
+// Advance to next page
+iP1.goToPrev();
+
+// Gets current page
+iP1.getCurentPage();
+
+// Gets total number of pages
+iP1.getPages();
+
+// Removes instances in the page
+iP1.destroy();
+
 ````
 
 ## Event callbacks
