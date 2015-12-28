@@ -1,6 +1,6 @@
 # item-paginator-js
 
-
+![snapshot](https://raw.githubusercontent.com/carloscabo/item-paginator-js/master/snapshot.png)
 
 Simple item paginator, to paginate tables, item collections... with some callbacks:
 
